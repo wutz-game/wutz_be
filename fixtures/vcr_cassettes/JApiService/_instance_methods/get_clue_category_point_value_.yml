@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jservice.io/api/clues?category=67&max_date=2023-01-01&min_date=2000-01-01&value=100
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Wed, 13 Sep 2023 18:39:50 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Request-Method:
+      - GET,POST,OPTIONS
+      Etag:
+      - W/"054c5493443570942709d558cfe77f61"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 50dc28ee-16d1-4b2e-a1b7-0eb74bbcf1e3
+      X-Runtime:
+      - '0.078206'
+      Vary:
+      - Origin
+      Content-Length:
+      - '1415'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '[{"id":67860,"answer":"Hillary Clinton","question":"In 1969 she graduated
+        from Wellesley College where she was president of the student government","value":100,"airdate":"2000-02-04T20:00:00.000Z","created_at":"2022-12-30T19:07:13.255Z","updated_at":"2022-12-30T19:07:13.255Z","category_id":67,"game_id":2033,"invalid_count":null,"category":{"id":67,"title":"first
+        ladies","created_at":"2022-12-30T18:37:44.315Z","updated_at":"2022-12-30T18:37:44.315Z","clues_count":220}},{"id":75913,"answer":"Mary
+        Todd Lincoln","question":"She once said that of all her sorrows, the death
+        of her son Tad, at 18, hurt the most","value":100,"airdate":"2000-12-05T20:00:00.000Z","created_at":"2022-12-30T19:11:10.770Z","updated_at":"2022-12-30T19:11:10.770Z","category_id":67,"game_id":2214,"invalid_count":null,"category":{"id":67,"title":"first
+        ladies","created_at":"2022-12-30T18:37:44.315Z","updated_at":"2022-12-30T18:37:44.315Z","clues_count":220}},{"id":83544,"answer":"Laura
+        Bush","question":"A former school librarian, she helped organize the Texas
+        Book Festival to raise money for local libraries","value":100,"airdate":"2001-10-25T19:00:00.000Z","created_at":"2022-12-30T19:15:09.835Z","updated_at":"2022-12-30T19:15:09.835Z","category_id":67,"game_id":296,"invalid_count":null,"category":{"id":67,"title":"first
+        ladies","created_at":"2022-12-30T18:37:44.315Z","updated_at":"2022-12-30T18:37:44.315Z","clues_count":220}}]'
+  recorded_at: Wed, 13 Sep 2023 18:39:50 GMT
+recorded_with: VCR 6.2.0
