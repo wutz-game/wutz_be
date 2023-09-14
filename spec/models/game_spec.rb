@@ -6,6 +6,7 @@ RSpec.describe Game, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:questions) }
+    it { should have_many(:game_questions) }
+    it { should have_many(:questions).through(:game_questions) }
   end
 end

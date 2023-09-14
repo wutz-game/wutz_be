@@ -8,10 +8,10 @@ RSpec.describe Question, type: :model do
     it { should validate_presence_of(:clue_id) }
     it { should validate_presence_of(:value) }
     it { should validate_presence_of(:category_id) }
-    it { should validate_presence_of(:game_id) }
   end
 
   describe 'associations' do
-    it { should belong_to(:game) }
+    it { should have_many(:game_questions) }
+    it { should have_many(:games).through(:game_questions) }
   end
 end

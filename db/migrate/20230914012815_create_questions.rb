@@ -7,8 +7,6 @@ class CreateQuestions < ActiveRecord::Migration[7.0]
       t.integer :clue_id
       t.integer :value
       t.integer :category_id
-      t.references :game, foreign_key: true
-
       t.timestamps
     end
   end
