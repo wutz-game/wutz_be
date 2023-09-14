@@ -28,6 +28,7 @@
 # Ignore m/aster key for decrypting credentials and more.
 /config/master.key
 
+
 #Added files to ignore
 /fixtures/vcr_cassettes
-coverage
+/coverage
