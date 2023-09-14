@@ -25,6 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_012815) do
     t.string "answer"
     t.string "category"
     t.integer "clue_id"
+    t.integer "value"
+    t.integer "category_id"
     t.bigint "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
