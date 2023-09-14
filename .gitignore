@@ -27,4 +27,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/coverage
+
+#Added files to ignore
+fixtures/vcr_cassettes
+coverage
