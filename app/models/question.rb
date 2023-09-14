@@ -1,4 +1,5 @@
 class Question < ApplicationRecord
-  belongs_to :game
-  validates :clue, :answer, :category, :clue_id, :value, :category_id, :game_id, presence: true
+  has_many :game_questions
+  has_many :games, through: :game_questions
+  validates :clue, :answer, :category, :clue_id, :value, :category_id, presence: true
 end

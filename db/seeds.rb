@@ -9,14 +9,15 @@
 
 #Creates Questions in the database based on a category ID and a point value
 def question_create(cat, points)
-    response = JApiService.new.get_clues(cat, points).each do |q|
+    response = JApiService.new.get_clues(cat, points)
+    response.each do |q|
         formated_question = QuestionSerializer.format_question(q)
-        Question.create(formated_question)
+        Question.create!(formated_question)
     end
 end
 
 # Array for allowed categories by ID
-categories = [67,23,54]
+categories = [67,51,81]
 
 # Create questions for each category, at 3 difficulty levels
 categories.each do |cat|
