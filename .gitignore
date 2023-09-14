@@ -25,5 +25,9 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 
-# Ignore master key for decrypting credentials and more.
+# Ignore m/aster key for decrypting credentials and more.
 /config/master.key
+
+#Added files to ignore
+/fixtures/vcr_cassettes
+coverage
