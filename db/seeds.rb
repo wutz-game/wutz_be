@@ -12,13 +12,13 @@ def question_create(cat)
     response = JApiService.new.get_clues(cat)
     response.each do |q|
         formated_question = QuestionSerializer.format_question(q)
-        Question.create!(formated_question)
+        Question.create(formated_question)
     end
 end
 
 # Array for allowed categories by ID
 categories = [67,51,81]
-#
+
 # Create questions for each category, at 3 difficulty levels
 categories.each do |cat|
     question_create(cat)

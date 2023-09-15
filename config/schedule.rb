@@ -2,13 +2,8 @@
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
-
 # Example:
 #
-set :output, "log/cron.log"
-
-set :bundle_command, "/Users/ianlyell/.rbenv/shims/bundle exec"
-
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
 #   runner "MyModel.some_method"
@@ -18,8 +13,15 @@ set :bundle_command, "/Users/ianlyell/.rbenv/shims/bundle exec"
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
-
 # Learn more: http://github.com/javan/whenever
+
+#Sets output log
+set :output, "log/cron.log"
+
+#Sets bundle path
+set :bundle_command, "/Users/ianlyell/.rbenv/shims/bundle exec"
+
+#Creates a new daily game in the DB at 1:00 AM everyday.
 every 1.minute do
     rake "daily_game:create_daily_game", :environment => "development"
 end

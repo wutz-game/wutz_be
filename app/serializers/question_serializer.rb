@@ -13,7 +13,7 @@ class QuestionSerializer
     
     def self.adjusted_value(value)
         if value.nil?
-            1
+            nil
         elsif value < 300
             1
         elsif value > 500
