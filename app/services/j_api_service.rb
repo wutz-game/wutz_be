@@ -15,7 +15,7 @@ class JApiService
         JSON.parse(response.body, symbolize_names: true)
     end
 
-    def get_clues(category, point_value)
-        get_url("api/clues?value=#{point_value}&category=#{category}&min_date=#{@min_date}&max_date=#{@max_date}")
+    def get_clues(category)
+        get_url("api/clues?category=#{category}&min_date=#{@min_date}&max_date=#{@max_date}")
     end
 end
