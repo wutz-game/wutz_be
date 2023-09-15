@@ -3,7 +3,6 @@ class GameSerializer
     game = game_data.first.game
 
     categories = game_data.map { |game_question| game_question.question.category }.uniq
-
     
     {
       data: {
@@ -19,7 +18,7 @@ class GameSerializer
     categories.map do |category|
       {
         category: category,
-        category_emoji: category, #ummm something about chatgippity here
+        category_emoji: CATEGORY_EMOJI_MAP[category], #ummm something about chatgippity here
         questions: serialize_questions(category, game_data)
       }
     end
@@ -37,4 +36,14 @@ class GameSerializer
       }
     end
   end
+
+  CATEGORY_EMOJI_MAP = {
+    "IS" => "😀",
+    "THIS" => "😎",
+    "WORKING" => "🔧"
+    "First Ladies" => "👩‍⚖️",
+    "Geography" => "🌎",
+    "Sports" => "🏈",
+  }
+  
 end
