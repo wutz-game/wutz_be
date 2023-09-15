@@ -40,8 +40,8 @@ class GameSerializer
   CATEGORY_EMOJI_MAP = {
     "IS" => "😀",
     "THIS" => "😎",
-    "WORKING" => "🔧"
-    "First Ladies" => "👩‍⚖️",
+    "WORKING" => "🔧",
+    "First Ladies" => "👩",
     "Geography" => "🌎",
     "Sports" => "🏈",
   }
