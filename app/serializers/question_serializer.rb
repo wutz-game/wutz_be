@@ -4,7 +4,7 @@ class QuestionSerializer
                 answer: question[:answer],
                 clue: question[:question],
                 clue_id: question[:id],
-                category: question[:category][:title],
+                category: question[:category],
                 category_id: question[:category_id],
                 value: question[:value]
                 
