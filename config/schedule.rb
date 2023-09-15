@@ -19,9 +19,9 @@
 set :output, "log/cron.log"
 
 #Sets bundle path
-set :bundle_command, "/Users/ianlyell/.rbenv/shims/bundle exec"
+# set :bundle_command, "/Users/ianlyell/.rbenv/shims/bundle exec"
 
 #Creates a new daily game in the DB at 1:00 AM everyday.
 every 1.minute do
-    rake "daily_game:create_daily_game", :environment => "development"
+    rake "daily_game:create_daily_game", :environment => "production"
 end
