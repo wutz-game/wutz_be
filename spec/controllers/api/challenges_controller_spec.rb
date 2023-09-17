@@ -10,7 +10,7 @@ RSpec.describe Api::ChallengesController, type: :controller do
 
       expect(response).to have_http_status(:ok)
       parsed_response = JSON.parse(response.body)
-      
+
       # Ensure there are 3 categories
       expect(parsed_response["data"]["categories"].count).to eq(3)
 

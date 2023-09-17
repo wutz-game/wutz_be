@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe JApiService, type: :service do
     describe '#instance methods' do
-        it 'get_clues(category, point_value)', :vcr do
+        it 'get_clues(category)', :vcr do
             clues = JApiService.new.get_clues("67")
 
             clue = clues[0]
