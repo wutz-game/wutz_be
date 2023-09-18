@@ -8,6 +8,13 @@
 
 
 #Creates Questions in the database based on a category ID and a point value
+
+Game.delete_all
+Question.delete_all
+GameQuestion.delete_all
+UserGame.delete_all
+AnsweredQuestion.delete_all
+
 def question_create(cat)
     response = JApiService.new.get_clues(cat)
     response.each do |q|

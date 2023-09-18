@@ -5,4 +5,6 @@ class AnsweredQuestion < ApplicationRecord
   validates :user_game_id, presence: true
   validates :question, presence: true
   validates :result, presence: true
+
+  enum result: [ :incorrect, :correct, :self_correct, :skipped ]
 end
