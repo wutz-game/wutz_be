@@ -1,156 +1,151 @@
-# Wutz!
+# Wutz
 
-Wutz is a daily social trivia game using an API scrapping Jeopardy Productions trivia. [^1]
-[^1]: This is not associated with jeopardy productions, inc.
+_What's Wutz?_
 
-## Developed Using
+Wutz is a daily social trivia game featuring clues from the Jeopardy! game show. [^1]
+[^1]: _The Jeopardy! game show and all elements thereof, including but not limited to copyright and trademark thereto, are the property of Jeopardy Productions, Inc. This application is not affiliated with, sponsored by, or operated by Jeopardy Productions, Inc._
+### Table of Contents
+
+* [🚀 Getting Started](#🚀-getting-started)
+* [Wutz API Endpoints](#wutz-api-endpoints)
+* [🌐 APIs Consumed](#🌐-apis-consumed)
+* [✍️ Authors](#✍️-authors)
+
+## 🚀 Getting Started
+
+### Requirements
 
 * Rails 7.0.X
-* API https://jservice.io/
+* Ruby 3.2.x
+* PostgresQL
+* A ChatGPT API Key to generate Emojis
 
-# JService.io API Documentation
+### Installing
 
-JService.io is an API that provides trivia questions and answers from the popular TV game show "Jeopardy." This documentation will guide you through the available endpoints and how to use them to access trivia data.
+* Clone the repo to your local machine
+* Install all requisite Gems:
+```
+bundle install
+```
+* Create and seed your local Postgres database
+```
+rails db:{create,migrate,seed}
+```
+* Run the Rake task to create the day's game 
+```
+rails daily_game:create_daily_game
+```
 
-### /api/clues
-- `/value(int)` the value of the clue in dollars
-- `/category(int)` the id of the category you want to return
-- `/min_date(date)` earliest date to show, based on original air date
-- `/max_date(date)` latest date to show, based on original air date
-- `/offset(int)` offsets the returned clues. Useful in pagination
-### /api/random
-- `/count(int)` amount of clues to return, limited to 100 at a time
-### /api/final
-- `/count(int)` amount of clues to return, limited to 100 at a time
-### /api/categories
-- `/count(int)` amount of categories to return, limited to 100 at a time
-- `/offset(int)` offsets the starting id of categories returned. Useful in pagination
-### /api/category
-- `/id(int)` Required the ID of the category to return
+## Wutz API Endpoints
 
-## Base URL
+### Get Daily Challenge
 
-The base URL for all API endpoints is `https://jservice.io/api`.
+#### Request Endpoint
 
-## Endpoints
+`GET` `/api/challenges`
 
-### 1. Get Random Clues
 
-- **Endpoint:** `/random`
-- **Method:** GET
-- **Description:** Retrieve a random set of trivia clues.
-- **Parameters:**
-  - `/count(int)` (optional): The number of random clues to retrieve (limited to 100 at a time).
-- **Example Request:** `/random?count=5`
-- **Example Response:**
+#### Response
+
+<details open>
+<summary>Successful Response Body</summary>
+
 ```json
-[
 {
-    "id": 1,
-    "answer": "This is the capital of France.",
-    "question": "What is Paris?"
-},
-// More clues...
-]
-```
-### 2. Get Clues by Category
-
-- **Endpoint:** `/category`
-- **Method:** GET
-- **Description:** Retrieve trivia clues based on a specific category.
-- **Parameters:**
-  - `/id(int)` (required): The ID of the category to retrieve clues from.
-- **Example Request:** `/category?id=10`
-- **Example Response:**
-```json
-[
-{
-    "id": 101,
-    "answer": "This country is known as the Land of the Rising Sun.",
-    "question": "What is Japan?"
-},
-// More clues...
-]
-```
-  
-  ### 3. Get Categories
-
-- **Endpoint:** `/categories`
-- **Method:** GET
-- **Description:** Retrieve a list of trivia categories.
-- **Parameters:**
-  - `/count(int)` (optional): The number of categories to retrieve (limited to 100 at a time).
-  - `/offset(int)` (optional): Offset the starting ID of categories returned (useful for pagination).
-- **Example Request:** `/categories?count=10&offset=20`
-- **Example Response:**
-```json
-[
-{
-    "id": 21,
-    "title": "World Capitals"
-},
-// More categories...
-]
-```
-  
-  ### 4. Get Clues by Value and Category
-
-- **Endpoint:** `/clues`
-- **Method:** GET
-- **Description:** Retrieve trivia clues based on value and category.
-- **Parameters:**
-  - `/value(int)` (optional): The value of the clue in dollars.
-  - `/category(int)` (optional): The ID of the category to retrieve clues from.
-  - `/min_date(date)` (optional): The earliest date to show clues based on the original air date.
-  - `/max_date(date)` (optional): The latest date to show clues based on the original air date.
-  - `/offset(int)` (optional): Offset the returned clues (useful for pagination).
-- **Example Request:** `/clues?value=200&category=10&min_date=2022-01-01&max_date=2022-12-31&offset=0`
-- **Example Response:**
-```json
-[
-{
-    "id": 1001,
-    "answer": "This is the longest river in the world.",
-    "question": "What is the Nile River?"
-},
-// More clues...
-]
-```
-
-### 5. Get Final Jeopardy Clues
-
-- **Endpoint:** `/final`
-- **Method:** GET
-- **Description:** Retrieve a set number of Final Jeopardy clues.
-- **Parameters:**
-  - `/count(int)` (optional): The number of Final Jeopardy clues to retrieve (limited to 100 at a time).
-- **Example Request:** `/final?count=3`
-- **Example Response:**
-```json
-[
-{
-    "id": 10001,
-    "answer": "This is the largest planet in our solar system.",
-    "question": "What is Jupiter?"
-},
-// More Final Jeopardy clues...
-]
+    "data": {
+        "type": "game",
+        "id": 1,
+        "date": "18/09/2023",
+        "categories": [
+            {
+                "category": "first ladies",
+                "category_emoji": null,
+                "questions": [
+                    {
+                        "answer": "Abigail Adams",
+                        "question": "Born in Massachusetts, she was descended from the Quincy family on her mother's side",
+                        "points": 1
+                    },
+                    {
+                        "answer": "Mary Lincoln",
+                        "question": "While she was First Lady, her half brother Samuel was killed at the Battle of Shiloh",
+                        "points": 2
+                    },
+                    {
+                        "answer": "Grace Coolidge",
+                        "question": "She graduated from the University of Vermont in 1902",
+                        "points": 3
+                    }
+                ]
+            },
+            {
+                "category": "geography",
+                "category_emoji": null,
+                "questions": [
+                    {
+                        "answer": "Kazakhstan",
+                        "question": "Of the 14 countries that border Russia, this \"stan\" country shares the longest border with it, 4,750 miles",
+                        "points": 1
+                    },
+                    {
+                        "answer": "Italy",
+                        "question": "The northern end of this country's largest lake, Lake Garda in the Po Valley, once belonged to Austria",
+                        "points": 2
+                    },
+                    {
+                        "answer": "a steppe",
+                        "question": "A vast grassland from central Europe to Manchuria is called by this 1-syllable word from the Russian",
+                        "points": 3
+                    }
+                ]
+            },
+            {
+                "category": "sports",
+                "category_emoji": null,
+                "questions": [
+                    {
+                        "answer": "golf",
+                        "question": "Ben Crenshaw & Phil Mickelson are the only 3-time winners of this college sport's championship tournament",
+                        "points": 1
+                    },
+                    {
+                        "answer": "Emmitt Smith",
+                        "question": "In 1994 this Dallas Cowboy scored 22 touchdowns; in 1995 he topped that with 25",
+                        "points": 2
+                    },
+                    {
+                        "answer": "Carlton Fisk",
+                        "question": "Inducted into the Hall of Fame in 2000, this catcher hit a dramatic homer in Game 6 of the 1975 World Series",
+                        "points": 3
+                    }
+                ]
+            }
+        ]
+    }
+}
 ```
 
+</details>
 
 
 
-## Question Acquisition
+## 🌐 APIs Consumed
 
-`get_url("api/clues?value=#{point_value}&category=#{category}&min_date=#{@min_date}&max_date=#{@max_date}")`
+* [jService.io](https://jservice.io/)
+* [ChatGPT](https://platform.openai.com/docs/guides/gpt)
 
-Using the endpoint `/api/clues` we can query `values` and `category` to recieve all questions between Jan 1 200 - Jan 1 2023.
+## ✍️ Authors
 
-(using testing data for now) 
-```
-clues = JApiService.new.get_clues("67, "100")
-or /api/clues?category=67&value=100
-```
-This grabs all questions from the "First Ladies" category with a value of 100 points.
+**Wutz** is a student project built in September, 2023 for the Backend Program of the [Turing School of Software and Design](https://turing.edu/).
 
-This expects the query to have a `:value :category_id :answer :question :airdate `
+* **Ethan Black** ❗ [Github]() | [LinkedIn]()
+* **Chris Cullinane** ❗ ([Github](), [LinkedIn]())
+* **Ian Lyell** ❗ ([Github](), [LinkedIn]())
+* **Connor Richmond** ❗ ([Github](), [LinkedIn]())
+* **Mike Wood** ❗ ([Github](), [LinkedIn]())
+
+## Notice
+
+All clues are pulled from [jService.io](https://jservice.io/). 
+
+_The Jeopardy! game show and all elements thereof, including but not limited to copyright and trademark thereto, are the property of Jeopardy Productions, Inc. This application is not affiliated with, sponsored by, or operated by Jeopardy Productions, Inc._
