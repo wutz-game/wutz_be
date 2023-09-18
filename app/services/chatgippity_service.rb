@@ -20,7 +20,8 @@ class ChatgippityService
   private
 
   def conn
-    api_key = Rails.application.credentials.dig(:development, :api_key)
+    api_key = Rails.application.credentials.api_key
+    binding.pry
     @conn ||= Faraday.new('https://api.openai.com/v1/', ssl: { verify: true }) do |builder|
       builder.request :url_encoded
       builder.headers['Content-Type'] = 'application/json'
