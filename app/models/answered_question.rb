@@ -6,5 +6,5 @@ class AnsweredQuestion < ApplicationRecord
   validates :question, presence: true
   validates :result, presence: true
 
-  enum result: [ :incorrect, :correct, :self_correct ]
+  enum result: [ :incorrect, :correct, :self_correct, :skipped ]
 end
