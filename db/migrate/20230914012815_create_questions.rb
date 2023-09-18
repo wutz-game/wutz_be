@@ -7,6 +7,7 @@ class CreateQuestions < ActiveRecord::Migration[7.0]
       t.integer :clue_id
       t.integer :value
       t.integer :category_id
+      t.integer :status, default: 0
       t.timestamps
     end
   end

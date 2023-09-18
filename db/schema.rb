@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_023028) do
     t.bigint "user_game_id", null: false
     t.string "answer"
     t.string "question"
-    t.string "result"
+    t.integer "result", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_game_id"], name: "index_answered_questions_on_user_game_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_023028) do
     t.integer "clue_id"
     t.integer "value"
     t.integer "category_id"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

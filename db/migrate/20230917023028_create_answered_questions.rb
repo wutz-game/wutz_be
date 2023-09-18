@@ -4,7 +4,7 @@ class CreateAnsweredQuestions < ActiveRecord::Migration[7.0]
       t.references :user_game, null: false, foreign_key: true
       t.string :answer
       t.string :question
-      t.string :result
+      t.integer :result, default: 0
       t.timestamps
     end
   end
