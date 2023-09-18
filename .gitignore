@@ -32,7 +32,3 @@
 #Added files to ignore
 /fixtures/vcr_cassettes
 /coverage
-
-/config/credentials/test.key
-
-/config/credentials/developement.key
