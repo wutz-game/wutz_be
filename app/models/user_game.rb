@@ -1,5 +1,5 @@
 class UserGame < ApplicationRecord
-    has_many :answered_questions
+    has_many :user_answers
     belongs_to :game
 
     validates :user_id, presence: true

@@ -1,4 +1,4 @@
-class AnsweredQuestion < ApplicationRecord
+class UserAnswer < ApplicationRecord
   belongs_to :user_game
 
   validates :answer, presence: true

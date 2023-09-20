@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AnsweredQuestion, type: :model do
+RSpec.describe UserAnswer, type: :model do
   describe 'relations and validations' do
     it { should validate_presence_of(:user_game_id) }
     it { should validate_presence_of(:answer) }

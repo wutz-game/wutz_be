@@ -5,7 +5,7 @@ RSpec.describe UserGame, type: :model do
     it { should validate_presence_of(:user_id) }
     it { should validate_presence_of(:game_id) }
     
-    it { should have_many(:answered_questions) }
+    it { should have_many(:user_answers) }
     it { should belong_to(:game) }
   end
 end
