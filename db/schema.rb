@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_053617) do
   create_table "user_answers", force: :cascade do |t|
     t.bigint "user_game_id", null: false
     t.string "user_answer"
-    t.string "result"
+    t.integer "result", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "game_question_id", null: false
