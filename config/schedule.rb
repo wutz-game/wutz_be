@@ -22,6 +22,6 @@ set :output, "log/cron.log"
 # set :bundle_command, "/Users/ianlyell/.rbenv/shims/bundle exec"
 
 #Creates a new daily game in the DB at 1:00 AM everyday.
-every 1.minute do
+every 1.hour do
     rake "daily_game:create_daily_game", :environment => "production"
 end

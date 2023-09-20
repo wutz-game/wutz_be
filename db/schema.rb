@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_053617) do
     t.integer "clue_id"
     t.integer "value"
     t.integer "category_id"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
