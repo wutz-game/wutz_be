@@ -1,7 +1,7 @@
 class JApiService
 
     def initialize
-        @min_date = "2000-01-01"
+        @min_date = "2001-11-26" # November 26th, 2001 is the date when the moetary values of first round Jeopardy questions switched from 100-500 to 200-1000.
         @max_date = "2023-01-01"
     end
 
