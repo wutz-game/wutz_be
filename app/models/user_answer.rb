@@ -6,7 +6,7 @@ class UserAnswer < ApplicationRecord
   validates :game_question_id, presence: true
   validates :result, presence: true
 
-  enum result: [ :incorrect, :correct, :self_correct, :skipped ]
+  enum result: [ :incorrect, :correct, :self_corrected, :skipped ]
 
   def question
     game_question.question.clue
