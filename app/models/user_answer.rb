@@ -1,8 +1,16 @@
 class UserAnswer < ApplicationRecord
   belongs_to :user_game
+  belongs_to :game_question
 
-  validates :answer, presence: true
   validates :user_game_id, presence: true
-  validates :question, presence: true
+  validates :game_question_id, presence: true
   validates :result, presence: true
+
+  def question
+    game_question.question.clue
+  end
+
+  def answer
+    game_question.question.answer
+  end
 end
