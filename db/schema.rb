@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_17_023028) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_20_053617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,16 +51,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_023028) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_answers", force: :cascade do |t|
+    t.bigint "user_game_id", null: false
+    t.string "user_answer"
+    t.integer "result", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "game_question_id", null: false
+    t.index ["game_question_id"], name: "index_user_answers_on_game_question_id"
+    t.index ["user_game_id"], name: "index_user_answers_on_user_game_id"
+  end
+
   create_table "user_games", force: :cascade do |t|
     t.bigint "game_id", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "score"
     t.index ["game_id"], name: "index_user_games_on_game_id"
   end
 
-  add_foreign_key "answered_questions", "user_games"
   add_foreign_key "game_questions", "games"
   add_foreign_key "game_questions", "questions"
+  add_foreign_key "user_answers", "game_questions"
+  add_foreign_key "user_answers", "user_games"
   add_foreign_key "user_games", "games"
 end

@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :challenges, only: [:index]
+    resources :user_games, only: [:create]
   end
 end

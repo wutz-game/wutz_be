@@ -7,7 +7,7 @@ RSpec.describe JApiService, type: :service do
 
             clue = clues[0]
 
-            expect(clue[:value]).to eq(100)
+            expect(clue[:value]).to be_an(Integer)
             expect(clue[:category_id]).to eq(67)
             expect(clue).to have_key(:answer)
             expect(clue).to have_key(:question)

@@ -1,9 +1,11 @@
 class GameSerializer
+  include JSONAPI::Serializer
+
   def self.serialize(game_data)
     game = game_data.first.game
 
     categories = game_data.map { |game_question| game_question.question.category }.uniq
-    
+
     {
       data: {
         type: "game",

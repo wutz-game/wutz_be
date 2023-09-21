@@ -9,11 +9,12 @@
 
 #Creates Questions in the database based on a category ID and a point value
 
-Game.delete_all
-Question.delete_all
 GameQuestion.delete_all
-UserGame.delete_all
+UserAnswer.delete_all
 AnsweredQuestion.delete_all
+Question.delete_all
+UserGame.delete_all
+Game.delete_all
 
 def question_create(cat)
     response = JApiService.new.get_clues(cat)
