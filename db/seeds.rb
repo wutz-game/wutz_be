@@ -11,7 +11,6 @@
 
 GameQuestion.delete_all
 UserAnswer.delete_all
-AnsweredQuestion.delete_all
 Question.delete_all
 UserGame.delete_all
 Game.delete_all
