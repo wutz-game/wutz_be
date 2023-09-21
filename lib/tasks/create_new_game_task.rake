@@ -22,7 +22,6 @@ namespace :daily_game do
         }
       end
     end
-
     # Use ChatGPT to get Emojis for each category
     question_categories.each do |question_category|
       emoji = ChatgippityService.new(question_category[:name]).get_url
@@ -30,7 +29,6 @@ namespace :daily_game do
       question_category[:emoji] = emoji.grapheme_clusters.first
       # Note: I use the "grapheme_clusters" method to only get the first emoji in the event that multiple are sent over
     end
-    
     # Create an array of 3 QuestionCategory objects
     question_categories = question_categories.map do |qc_data|
       question_category = QuestionCategory.new(qc_data)
@@ -50,10 +48,12 @@ namespace :daily_game do
     # Then, pick and create three questions for that category with appropriate point values
     # Create game_questions for each question
     question_categories.each do |qc|
-      category_qs = jservice.clues_by_category(qc.jservice_id)
+      all_category_qs = jservice.clues_by_category(qc.jservice_id)
+
+      valid_category_qs = all_category_qs.select { |q| q[:value] != nil }
 
       # Takes the three questions with the lowest point value
-      easiest_qs = category_qs.min_by(3) { |q| q[:value] }
+      easiest_qs = valid_category_qs.min_by(3) { |q| q[:value] }
 
       one_pt_q = Question.create(
         answer: easiest_qs[0][:answer],
@@ -63,6 +63,8 @@ namespace :daily_game do
         category_id: easiest_qs[0][:category_id],
         value: 1
       )
+      GameQuestion.create(game_id: game.id, question_id: one_pt_q.id)
+      
       two_pt_q = Question.create(
         answer: easiest_qs[1][:answer],
         clue: easiest_qs[1][:question],
@@ -71,6 +73,8 @@ namespace :daily_game do
         category_id: easiest_qs[1][:category_id],
         value: 2
       )
+      GameQuestion.create(game_id: game.id, question_id: two_pt_q.id)
+        
       three_pt_q = Question.create(
         answer: easiest_qs[2][:answer],
         clue: easiest_qs[2][:question],
@@ -79,8 +83,8 @@ namespace :daily_game do
         category_id: easiest_qs[2][:category_id],
         value: 3
       )
+      GameQuestion.create(game_id: game.id, question_id: three_pt_q.id)
     end
-    
     puts "Game Created!"
   end
 end
