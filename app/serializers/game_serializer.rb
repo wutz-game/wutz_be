@@ -34,6 +34,7 @@ class GameSerializer
       {
         answer: question.answer,
         question: question.clue,
+        game_question_id: game_question.id,
         points: question.value
       }
     end
