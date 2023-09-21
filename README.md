@@ -38,16 +38,19 @@ Wutz is a daily social trivia game featuring clues from the Jeopardy! game show.
           {
             "answer": "Abigail Adams",
             "question": "Born in Massachusetts, she was descended from the Quincy family on her mother's side",
+            "game_question_id": 1,
             "points": 1
           },
           {
             "answer": "Mary Lincoln",
             "question": "While she was First Lady, her half brother Samuel was killed at the Battle of Shiloh",
+            "game_question_id": 2,
             "points": 2
           },
           {
             "answer": "Grace Coolidge",
             "question": "She graduated from the University of Vermont in 1902",
+            "game_question_id": 3,
             "points": 3
           }
         ]
@@ -59,16 +62,19 @@ Wutz is a daily social trivia game featuring clues from the Jeopardy! game show.
           {
             "answer": "Kazakhstan",
             "question": "Of the 14 countries that border Russia, this \"stan\" country shares the longest border with it, 4,750 miles",
+            "game_question_id": 4,
             "points": 1
           },
           {
             "answer": "Italy",
             "question": "The northern end of this country's largest lake, Lake Garda in the Po Valley, once belonged to Austria",
+            "game_question_id": 5,
             "points": 2
           },
           {
             "answer": "a steppe",
             "question": "A vast grassland from central Europe to Manchuria is called by this 1-syllable word from the Russian",
+            "game_question_id": 6,
             "points": 3
           }
         ]
@@ -80,16 +86,19 @@ Wutz is a daily social trivia game featuring clues from the Jeopardy! game show.
           {
             "answer": "golf",
             "question": "Ben Crenshaw & Phil Mickelson are the only 3-time winners of this college sport's championship tournament",
+            "game_question_id": 7,
             "points": 1
           },
           {
             "answer": "Emmitt Smith",
             "question": "In 1994 this Dallas Cowboy scored 22 touchdowns; in 1995 he topped that with 25",
+            "game_question_id": 8,
             "points": 2
           },
           {
             "answer": "Carlton Fisk",
             "question": "Inducted into the Hall of Fame in 2000, this catcher hit a dramatic homer in Game 6 of the 1975 World Series",
+            "game_question_id": 10,
             "points": 3
           }
         ]
