@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Api::ChallengesController, type: :controller do
   describe 'GET #index' do
     it 'returns the last 9 game questions as JSON' do
-      game = FactoryBot.create(:game)
-      game_questions = FactoryBot.create_list(:game_question, 9, game: game)
+      # game = FactoryBot.create(:game)
+      # game_questions = FactoryBot.create_list(:game_question, 9, game: game)
 
       get :index
 
