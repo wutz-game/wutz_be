@@ -14,6 +14,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_053617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "answered_questions", force: :cascade do |t|
+    t.bigint "user_game_id", null: false
+    t.string "answer"
+    t.string "question"
+    t.integer "result", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_game_id"], name: "index_answered_questions_on_user_game_id"
+  end
+
   create_table "game_questions", force: :cascade do |t|
     t.bigint "game_id", null: false
     t.bigint "question_id", null: false
