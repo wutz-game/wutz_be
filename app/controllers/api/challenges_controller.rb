@@ -4,7 +4,7 @@ class Api::ChallengesController < ApplicationController
     game_questions = GameQuestion.includes(:question).order(created_at: :desc).limit(9)
 
     # Order the game questions by category and value 
-    ordered_questions = game_questions.sort_by { |gq| [gq.question.category, gq.question.value] }
+    ordered_questions = game_questions.sort_by { |gq| [gq.question.category_id, gq.question.value] }
 
     # Send the serialized data as JSON response
     render json: GameSerializer.serialize(ordered_questions)

@@ -34,29 +34,29 @@ class ChatgippityService
   def request_body
     {
       model: 'gpt-3.5-turbo',
-    messages: [
-      {
-        role: 'system',
-        content: 'You are a helpful assistant.'
-      },
-      {
-        role: 'user',
-        content: 'Hello, I need an emoji to represent geography.'
-      },
-      {
-        role: 'assistant',
-        content: '🌎'
-      },
-      {
-        role: 'user',
-        content: "Perfect! Can I have an emoji for #{@category}"
-      }
-    ],
-    temperature: 0.1,
-    max_tokens: 60,
-    top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0
+      messages: [
+        {
+          role: 'system',
+          content: 'You are a helpful assistant.'
+        },
+        {
+          role: 'user',
+          content: "Hello, I need one emoji to represent: 'geography'"
+        },
+        {
+          role: 'assistant',
+          content: '🌎'
+        },
+        {
+          role: 'user',
+          content: "Perfect! Can I have one emoji to represent: '#{@category}'"
+        }
+      ],
+      temperature: 0.1,
+      max_tokens: 60,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0
     }
   end
 end

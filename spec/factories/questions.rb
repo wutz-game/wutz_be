@@ -6,5 +6,6 @@ FactoryBot.define do
     clue { "Hello" }
     clue_id { 420 }
     value { rand(1..3) }
+    status { 0 }
   end
 end

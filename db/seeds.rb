@@ -16,7 +16,7 @@ UserGame.delete_all
 Game.delete_all
 
 def question_create(cat)
-    response = JApiService.new.get_clues(cat)
+    response = JApiService.new.clues_by_category(cat)
     response.each do |q|
         formated_question = QuestionSerializer.format_question(q)
         Question.create(formated_question)
