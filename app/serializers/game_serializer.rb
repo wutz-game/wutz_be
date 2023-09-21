@@ -4,7 +4,7 @@ class GameSerializer
   def self.serialize(game_data)
     game = game_data.first.game
 
-    categories = game_data.map { |game_question| game_question.question.category }.uniq
+    categories = game.question_categories
 
     {
       data: {
@@ -19,15 +19,15 @@ class GameSerializer
   def self.serialize_categories(categories, game_data)
     categories.map do |category|
       {
-        category: category,
-        category_emoji: CATEGORY_EMOJI_MAP[category], #ummm something about chatgippity here
+        category: category.name,
+        category_emoji: category.emoji, #ummm something about chatgippity here
         questions: serialize_questions(category, game_data)
       }
     end
   end
 
   def self.serialize_questions(category, game_data)
-    game_questions = game_data.select { |game_question| game_question.question.category == category }
+    game_questions = game_data.select { |game_question| game_question.question.category_id == category.jservice_id }
 
     game_questions.map do |game_question|
       question = game_question.question
@@ -38,14 +38,4 @@ class GameSerializer
       }
     end
   end
-
-  CATEGORY_EMOJI_MAP = {
-    "IS" => "😀",
-    "THIS" => "😎",
-    "WORKING" => "🔧",
-    "First Ladies" => "👩",
-    "Geography" => "🌎",
-    "Sports" => "🏈",
-  }
-  
 end
