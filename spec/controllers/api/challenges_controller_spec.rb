@@ -4,7 +4,28 @@ RSpec.describe Api::ChallengesController, type: :controller do
   describe 'GET #index' do
     it 'returns the last 9 game questions as JSON' do
       # game = FactoryBot.create(:game)
+      # game_question_categories = FactoryBot.create_list(:game_question_category, 3, game: game)
       # game_questions = FactoryBot.create_list(:game_question, 9, game: game)
+
+      # Create the game and question categories
+      game = FactoryBot.create(:game)
+      question_categories = FactoryBot.create_list(:question_category, 3)
+
+      # Associate the question categories with the game
+      question_categories.each do |category|
+        FactoryBot.create(:game_question_category, game: game, question_category: category)
+      end
+
+      # Create the game questions with matching category_id
+      game_questions = []
+      question_categories.each do |category|
+        question1 = Question.create!(answer: "hello", clue: "greeting", clue_id: rand(1..99), value: 1, category: category.name, category_id: category.jservice_id)
+        question2 = Question.create!(answer: "hello", clue: "greeting", clue_id: rand(1..99), value: 2, category: category.name, category_id: category.jservice_id)
+        question3 = Question.create!(answer: "hello", clue: "greeting", clue_id: rand(1..99), value: 3, category: category.name, category_id: category.jservice_id)
+        game_questions << FactoryBot.create(:game_question, game: game, question: question1)
+        game_questions << FactoryBot.create(:game_question, game: game, question: question2)
+        game_questions << FactoryBot.create(:game_question, game: game, question: question3)
+      end
 
       get :index
 
