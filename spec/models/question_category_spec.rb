@@ -9,6 +9,6 @@ RSpec.describe QuestionCategory, type: :model do
 
   describe "associations" do
     it { should have_many(:game_question_categories) }
-    it { should have_many(:game_questions).through(:game_question_categories) }
+    it { should have_many(:games).through(:game_question_categories) }
   end
 end

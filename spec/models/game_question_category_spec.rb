@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe GameQuestionCategory, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'relations' do
+    it { should belong_to(:game) }
+    it { should belong_to(:question_category) }
+  end
 end
