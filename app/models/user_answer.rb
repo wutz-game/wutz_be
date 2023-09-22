@@ -8,11 +8,4 @@ class UserAnswer < ApplicationRecord
 
   enum result: [ :incorrect, :correct, :self_corrected, :skipped ]
 
-  def question
-    game_question.question.clue
-  end
-
-  def answer
-    game_question.question.answer
-  end
 end
