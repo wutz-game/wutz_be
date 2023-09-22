@@ -3,19 +3,33 @@
 _What's Wutz?_
 
 Wutz is a daily social trivia game featuring clues from the Jeopardy! game show. [^1] This Repo is the Wutz backend API that builds games from questions and stores completed user games.
-[^1]: _The Jeopardy! game show and all elements thereof, including but not limited to copyright and trademark thereto, are the property of Jeopardy Productions, Inc. This application is not affiliated with, sponsored by, or operated by Jeopardy Productions, Inc._
-### Table of Contents
 
-* [🔌 Wutz API Endpoints](#-wutz-api-endpoints)
-* [🚀 Getting Started](#-getting-started)
-* [🌐 APIs Consumed](#-apis-consumed)
-* [👤 Authors](#-authors)
+## Table of Contents
+
+- [🔗 Important Links](#🔗-important-links)
+- [🔌 Wutz API Endpoints](#🔌-wutz-api-endpoints)
+- [🚀 Getting Started](#-getting-started)
+- [🌐 APIs Consumed](#-apis-consumed)
+- [💾 Database Structure](#💾-database-structure)
+- [👤 Authors](#-authors)
+
+## 🔗 Important Links
+
+### Back End
+
+[GitHub](https://github.com/wutz-game/wutz_be)
+
+[Heroku Deployment](https://pacific-wildwood-99462-95c6d81ab3e1.herokuapp.com/api/challenges)
+
+### Front End
+
+[Github](https://github.com/wutz-game/wutz_fe)
+
+[Heroku Deployment](https://pacific-wildwood-99462-95c6d81ab3e1.herokuapp.com/api/challenges)
 
 ## 🔌 Wutz API Endpoints
 
-### Get Daily Challenge
-
-#### Request Endpoint
+### Request Endpoint
 
 `GET` `/api/challenges`
 
@@ -98,6 +112,9 @@ Wutz is a daily social trivia game featuring clues from the Jeopardy! game show.
   }
 }
 ```
+
+</details>
+
 </details>
 
 ### Post Your Completed Daily Challenge
@@ -106,15 +123,14 @@ Wutz is a daily social trivia game featuring clues from the Jeopardy! game show.
 
 `POST` `/api/user_games`
 
-
 #### Post Format
 
 <details closed>
 <summary>Example POST Request Format</summary>
 
 ```json
-{ 
-  "data": { 
+{
+  "data": {
     "type": "user_games",
     "user_id": 12,
     "game_id": 1,
@@ -169,6 +185,9 @@ Wutz is a daily social trivia game featuring clues from the Jeopardy! game show.
   }
 }
 ```
+
+</details>
+
 </details>
 
 #### Response
@@ -179,84 +198,195 @@ Wutz is a daily social trivia game featuring clues from the Jeopardy! game show.
 ```json
 {
   "data"=>{
-    "id"=>"8", 
-    "type"=>"user_game", 
+    "id"=>"8",
+    "type"=>"user_game",
     "attributes"=>{
-      "user_id"=>12, 
+      "user_id"=>12,
       "score"=>6, "created_at"=>"2023-09-20T20:27:59.247Z"
-      }, 
+      },
     "relationships"=>{
       "game"=>{
         "data"=>{
-          "id"=>"16", 
+          "id"=>"16",
           "type"=>"game"}
       }
     }
   }
 }
 ```
-</details>
 
+</details>
 
 ## 🚀 Getting Started
 
 ### Requirements
 
-* Rails 7.0.X
-* Ruby 3.2.x
-* PostgresQL
-* A ChatGPT API Key to generate Emojis
+- Rails 7.0.X
+- Ruby 3.2.x
+- PostgresQL
+- A ChatGPT API Key to generate Emojis
 
 ### Installing
 
 <details closed>
+
 <summary>Clone the repo to your local machine</summary>
 
 ```
 You can also fork it if you would like to work on your own project
 ```
+
 </details>
 
 <details closed>
+
 <summary>Install all requisite Gems:</summary>
-    
+
 ```
 bundle install
 ```
+
 </details>
 
 <details closed>
+
 <summary>Create and seed your local Postgres database</summary>
-    
+
 ```
 rails db:{create,migrate,seed}
 ```
+
 </details>
 
 <details closed>
+
 <summary>Run the Rake task to create the day's game</summary>
-    
+
 ```
 rails daily_game:create_daily_game
 ```
+
+</details>
+
+### Testing
+
+API testing using the endpoints above can be done manually (cURLs) or through Postman (or other similar application.
+
+<details closed>
+
+<summary>Code testing is done with these gems and bundle exec rspec</summary>
+
+```
+  gem 'webmock'
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rspec-rails'
+  gem 'simplecov', require: false, group: :test
+  gem 'vcr'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'shoulda-matchers'
+  gem 'pry'
+```
+
 </details>
 
 ## 🌐 APIs Consumed
 
-* [jService.io](https://jservice.io/)
-* [ChatGPT](https://platform.openai.com/docs/guides/gpt)
+- [jService.io](https://jservice.io/)
+- [ChatGPT](https://platform.openai.com/docs/guides/gpt)
+
+## 💾 Database Structure
+
+### Visual Representation:
+
+[Wutz BE Visual DB Structure](assets/20230921_184145_Wutz_BE%20DB%20Structure.png)
+
+### Schema:
+
+<details closed>
+
+<summary>Code</summary>
+
+```
+ActiveRecord::Schema[7.0].define(version: 2023_09_20_053617) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "game_questions", force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_game_questions_on_game_id"
+    t.index ["question_id"], name: "index_game_questions_on_question_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "orig_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "clue"
+    t.string "answer"
+    t.string "category"
+    t.integer "clue_id"
+    t.integer "value"
+    t.integer "category_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_answers", force: :cascade do |t|
+    t.bigint "user_game_id", null: false
+    t.string "user_answer"
+    t.integer "result", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "game_question_id", null: false
+    t.index ["game_question_id"], name: "index_user_answers_on_game_question_id"
+    t.index ["user_game_id"], name: "index_user_answers_on_user_game_id"
+  end
+
+  create_table "user_games", force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "score"
+    t.index ["game_id"], name: "index_user_games_on_game_id"
+  end
+
+  add_foreign_key "game_questions", "games"
+  add_foreign_key "game_questions", "questions"
+  add_foreign_key "user_answers", "game_questions"
+  add_foreign_key "user_answers", "user_games"
+  add_foreign_key "user_games", "games"
+end
+```
+
+</details>
+
 
 
 ## 👤 Authors
 
 **Wutz** is a student project built in September, 2023 for the Backend Program of the [Turing School of Software and Design](https://turing.edu/).
 
-* **Ethan Black** ❗ [Github]() | [LinkedIn]()
-* **Chris Cullinane** ❗ ([Github](), [LinkedIn]())
-* **Ian Lyell** ❗ ([Github](), [LinkedIn]())
-* **Connor Richmond** ❗ ([Github](), [LinkedIn]())
-* **Mike Wood** ❗ ([Github](), [LinkedIn]())
+- **Ethan Black** ❗[Github]() |[LinkedIn]()
+- **Chris Cullinane** ❗ ([Github](),[LinkedIn]())
+- **Ian Lyell** ❗ ([Github](),[LinkedIn]())
+- **Connor Richmond** ❗ ([Github](),[LinkedIn]())
+- **Mike Wood** ❗ ([Github](),[LinkedIn]())
 
 ## Notice
 
-All clues are pulled from [jService.io](https://jservice.io/). 
+All clues are pulled from [jService.io](https://jservice.io/).
+
+```
+
+```
+
+[^1]: _The Jeopardy! game show and all elements thereof, including but not limited to copyright and trademark thereto, are the property of Jeopardy Productions, Inc. This application is not affiliated with, sponsored by, or operated by Jeopardy Productions, Inc._
