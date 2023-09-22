@@ -15,17 +15,17 @@ Wutz is a daily social trivia game featuring clues from the Jeopardy! game show.
 
 ## 🔗 Important Links
 
-### Back End
-
-[GitHub](https://github.com/wutz-game/wutz_be)
-
-[Heroku Deployment](https://pacific-wildwood-99462-95c6d81ab3e1.herokuapp.com/api/challenges)
-
 ### Front End
+
+[Depolyed Game: Play Wutz!](https://hidden-spire-29708-f563a2b7cacc.herokuapp.com/)
 
 [Github](https://github.com/wutz-game/wutz_fe)
 
-[Heroku Deployment](https://pacific-wildwood-99462-95c6d81ab3e1.herokuapp.com/api/challenges)
+### Back End
+
+[Deployed API](https://pacific-wildwood-99462-95c6d81ab3e1.herokuapp.com/api/challenges)
+
+[GitHub Repo](https://github.com/wutz-game/wutz_be)
 
 ## 🔌 Wutz API Endpoints
 
@@ -299,7 +299,7 @@ API testing using the endpoints above can be done manually (cURLs) or through Po
 
 ### Visual Representation:
 
-[Wutz BE Visual DB Structure](assets/20230921_184145_Wutz_BE%20DB%20Structure.png)
+[Wutz BE Visual DB Structure](https://github.com/wutz-game/wutz_be/assets/8324716/f0ec16e2-997d-46a8-a4c9-40fe0539cd46)
 
 ### Schema:
 
@@ -385,8 +385,5 @@ end
 
 All clues are pulled from [jService.io](https://jservice.io/).
 
-```
-
-```
 
 [^1]: _The Jeopardy! game show and all elements thereof, including but not limited to copyright and trademark thereto, are the property of Jeopardy Productions, Inc. This application is not affiliated with, sponsored by, or operated by Jeopardy Productions, Inc._
