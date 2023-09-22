@@ -74,5 +74,40 @@ RSpec.describe JApiService, type: :service do
                 expect(random_clue).to have_key(:airdate)
             end
         end
+
+        describe 'modern clues' do
+            it "returns modern clues" do
+                @offset = 3
+                clues = @j_api_service.modern_clues
+
+                clue = clues[0]
+
+                expect(clue).to have_key(:id)
+                expect(clue[:id]).to be_an(Integer)
+
+                expect(clue).to have_key(:category_id)
+                expect(clue[:category_id]).to be_an(Integer)
+                
+                expect(clue).to have_key(:category)
+                expect(clue[:category]).to be_a(Hash)
+                
+                expect(clue[:category]).to have_key(:title)
+                expect(clue[:category][:title]).to be_a(String)
+                
+                expect(clue[:category]).to have_key(:clues_count)
+                expect(clue[:category][:clues_count]).to be_an(Integer)
+                
+                expect(clue).to have_key(:value)
+                expect(clue[:value]).to be_an(Integer)
+                
+                expect(clue).to have_key(:answer)
+                expect(clue[:answer]).to be_a(String)
+                
+                expect(clue).to have_key(:question)
+                expect(clue[:question]).to be_a(String)
+                
+                expect(clue).to have_key(:airdate)
+            end
+        end
     end
 end
