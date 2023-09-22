@@ -263,7 +263,7 @@ rails db:{create,migrate,seed}
 <summary>Run the Rake task to create the day's game</summary>
 
 ```
-rails daily_game:create_daily_game
+rails daily_game:create_new_daily_game
 ```
 
 </details>
