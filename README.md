@@ -375,11 +375,11 @@ end
 
 **Wutz** is a student project built in September, 2023 for the Backend Program of the [Turing School of Software and Design](https://turing.edu/).
 
-- **Ethan Black** ❗[Github]() |[LinkedIn]()
-- **Chris Cullinane** ❗ ([Github](),[LinkedIn]())
-- **Ian Lyell** ❗ ([Github](),[LinkedIn]())
-- **Connor Richmond** ❗ ([Github](),[LinkedIn]())
-- **Mike Wood** ❗ ([Github](),[LinkedIn]())
+- **Ethan Black** ❗([Github](https://github.com/ethanrossblack), [LinkedIn](https://www.linkedin.com/in/ethanrossblack/))
+- **Chris Cullinane** ❗ ([Github](https://github.com/topher-nullset), [LinkedIn](https://www.linkedin.com/in/chris-cullinane-be/))
+- **Ian Lyell** ❗ ([Github](https://github.com/ILyell), [LinkedIn](https://www.linkedin.com/in/ian-lyell/))
+- **Connor Richmond** ❗ ([Github](https://github.com/ConnorRichmond), [LinkedIn](https://www.linkedin.com/in/corichmond/))
+- **Mike Wood** ❗ ([Github](https://github.com/MWoodshop), [LinkedIn](https://www.linkedin.com/in/michaelwilliamwood/))
 
 ## Notice
 
